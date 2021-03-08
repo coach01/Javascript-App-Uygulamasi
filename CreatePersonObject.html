@@ -1,0 +1,95 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="AA" />
+    <style>
+        input[type=text], input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=button] {
+            width: 100%;
+            background-color: dodgerblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            input[type=button]:hover {
+                background-color: #4c79a4;
+            }
+
+        div {
+            border-radius: 7px;
+            background-color: #f3f3f3;
+            padding: 22px;
+            width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Create Person Object</h3>
+        <form id="myForm">
+
+            <label for="fname">Firstname</label>
+            <input type="text" id="fname" name="fname" value="Nikola">
+
+            <label for="lname">Lastname</label>
+            <input type="text" id="lname" name="lname" value="Tesla">
+
+            <label for="job">Job</label>
+            <select id="job" name="job">
+                <option value="Engineer">Engineer</option>
+                <option value="Architect">Architect</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Programer">Programmer</option>
+            </select>
+
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" value="100000">
+
+            <input type="button" onclick="createObject()" value="Create">
+            <input type="button" onclick="employee.printInfo()" value="Print Information">
+        </form>
+        <p id="printArea"></p>
+    </div>
+    <script>
+        var employee;  //global for print info button
+
+        function createObject() {
+            var field = document.getElementById("printArea");
+            employee = {
+                fname : document.forms["myForm"]["fname"].value,
+                lname : document.forms["myForm"]["lname"].value,
+                job: document.forms["myForm"]["job"].value,
+                salary: parseFloat(document.forms["myForm"]["salary"].value),
+                printInfo: function () {
+                    field.innerHTML = "Firstname : " + this.fname;
+                    field.innerHTML += "<br/>Lastname : " + this.lname;
+                    field.innerHTML += "<br/>Job : " + this.job;
+                    if (isNaN(this.salary)) {
+                        field.innerHTML += "<br/>Salary : $0";
+                    } else {
+                        field.innerHTML += "<br/>Salary : $" + this.salary;
+                    }
+                }
+            };
+        }
+        //You can find on github. I don't speak. Codes are speaking and working.
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Area and Perimeter Calculation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <br>
+
+    <div class="container">
+        <h1>Area & Perimeter Calculation</h1>
+        <br>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#square">Square</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#rectangle">Rectangle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#circle">Circle</a>
+            </li>
+        </ul>
+
+        <!-- begin of tab panes -->
+        <div class="tab-content">
+            <div id="square" class="container tab-pane active">
+                <form id="frm01">
+                    <div class="form-group">
+                        <label for="side">Width:</label>
+                        <input type="number" class="form-control" placeholder="Enter positive number" id="side">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="process(this.parentElement.id)">Calculate</button>
+                </form>
+            </div>
+            <div id="rectangle" class="container tab-pane fade">
+                <form id="frm02">
+                    <div class="form-group">
+                        <label for="width">Width:</label>
+                        <input type="number" class="form-control" placeholder="Enter positive number" id="width">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height:</label>
+                        <input type="number" min="0" class="form-control" placeholder="Enter positive number" id="height">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="process(this.parentElement.id)">Calculate</button>
+                </form>
+            </div>
+            <div id="circle" class="container tab-pane fade">
+                <form id="frm03">
+                    <div class="form-group">
+                        <label for="radius">Radius:</label>
+                        <input type="number" class="form-control" placeholder="Enter positive number" id="radius">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="process(this.parentElement.id)">Calculate</button>
+                </form>
+            </div>
+        </div>
+        <!-- end of tab panes -->
+        <hr />
+        <div class="row">
+            <div class="col">
+                <p id="printArea">Area : </p>
+            </div>
+            <div class="col">
+                <p id="printPerimeter">Perimeter : </p>
+            </div>
+        </div>
+        <div class="row" id="alert" style="display:none;">
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> Please enter suitable number.
+            </div>
+        </div>
+    </div>
+    <script>
+        function process(frmName) {
+            var area = 0;
+            var perimeter = 0;
+            switch (frmName) {
+                case "frm01":
+                    area = Math.abs(Math.pow(parseInt(document.forms[frmName]["side"].value), 2));
+                    perimeter = Math.abs(parseInt(document.forms[frmName]["side"].value) * 4);
+                    break;
+                case "frm02":
+                    let width = Math.abs(parseInt(document.forms[frmName]["width"].value));
+                    let height = Math.abs(parseInt(document.forms[frmName]["height"].value));
+                    area = width * height;
+                    perimeter = (width + height) * 2;
+                    break;
+                case "frm03":
+                    area = Math.abs(Math.PI * Math.pow(parseFloat(document.forms[frmName]["radius"].value), 2));
+                    perimeter = Math.abs(2 * Math.PI * parseFloat(document.forms[frmName]["radius"].value));
+                    break;
+                default:
+                    break;
+            }
+            if (isNaN(area) || isNaN(perimeter)) {
+                document.getElementById("alert").style.display = "block";
+            } else {
+                if (frmName == "frm03") {
+                    document.getElementById("printArea").innerHTML = "Area = " + area.toFixed(2)  + " unit<sup>2</sup>";
+                    document.getElementById("printPerimeter").innerHTML = "Perimeter = " + perimeter.toFixed(2) + " unit";
+                } else {
+                    document.getElementById("printArea").innerHTML = "Area = " + area+ " unit<sup>2</sup>";
+                    document.getElementById("printPerimeter").innerHTML = "Perimeter = " + perimeter + " unit";
+                }
+                document.getElementById("alert").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

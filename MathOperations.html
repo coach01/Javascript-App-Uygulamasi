@@ -1,0 +1,117 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="AA" />
+    <style>
+        input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=button] {
+            width: 100%;
+            background-color: dodgerblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            input[type=button]:hover {
+                background-color: #45a049;
+            }
+
+        div {
+            border-radius: 7px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Math Process</h3>
+        <form id="myForm">
+            <label for="fnum">1.Number</label>
+            <input type="number" id="fnum" name="firstNum" value="0">
+
+            <label for="snum">2.Number</label>
+            <input type="number" id="snum" name="secondNum" value="0">
+
+            <label for="process">Process</label>
+            <select id="process" name="process">
+                <option value="+">Addition</option>
+                <option value="-">Subtraction</option>
+                <option value="*">Multiplication</option>
+                <option value="/">Division</option>
+                <option value="**">Exponentiation </option>
+            </select>
+
+            <input type="button" onclick="calculate()" value="Calculate">
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+
+        function calculate() {
+            var x = parseInt(document.forms["myForm"]["fnum"].value);
+            var y = parseInt(document.forms["myForm"]["snum"].value);
+            var process = document.forms["myForm"]["process"].value;
+            var result = 0;
+            switch (process) {
+                case "+":
+                    result = x + y;
+                    break;
+                case "-":
+                    result = x - y;
+                    break;
+                case "*":
+                    result = x * y;
+                    break;
+                case "/":
+                    result = x / y;
+                    break;
+                case "**":
+                    result = x ** y;
+                    break;
+
+                default:
+            }
+            if (result == Infinity || result == -Infinity) {
+                if (y < 0)
+                    document.getElementById("result").innerHTML =
+                        "Warning : Negative forces of zero are uncertain";
+                else
+                    document.getElementById("result").innerHTML =
+                        "Warning : Any number divided by zero is undefined";
+
+            } else if(isNaN(result)) {
+                document.getElementById("result").innerHTML =
+                    "Warning : Zero divided by zero is uncertain";
+
+            } else if (x == 0 && y == 0 && process == "**") {
+                document.getElementById("result").innerHTML =
+                    "Warning : The zeroth power of zero is uncertain";
+
+            }else {
+                document.getElementById("result").innerHTML =
+                    "Result is = " + result.toString();
+
+            }
+        }
+
+    </script>
+</body>
+</html>
