@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="https://github.com/coach01">
+    <meta name="description" content="Create Form">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Create Bootstrap Form Elements</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        <div class="py-3 bg-light">
+            <div class="container">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Forms</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Link</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Dropdown
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">I am crazy</a>
+                                    </li>
+                                </ul>
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                <div class="row">
+                    <h3>Create Bootstrap Form Elements</h3>
+                    <div class="col-4 border-end">
+                        <form id="creater">
+                            <div class="mb-3">
+                                <label for="divElem" class="form-label">Div Element Classes *</label>
+                                <input type="text" class="form-control" id="divElem" value="mb-3" name="divElem" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="labelElem" class="form-label">Label Name *</label>
+                                <input type="text" class="form-control" id="labelElem" name="labelElem" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="TypeAttr" class="form-label">Input Type *</label>
+                                <input type="text" class="form-control" id="TypeAttr" name="TypeAttr" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="IdAttr" class="form-label">Input Id *</label>
+                                <input type="text" class="form-control" id="IdAttr" name="IdAttr" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="NameAttr" class="form-label">Input Name *</label>
+                                <input type="text" class="form-control" id="NameAttr" name="NameAttr" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ClassAttr" class="form-label">Input Class *</label>
+                                <input type="text" class="form-control" id="ClassAttr" name="ClassAttr" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="AriaAttrId" class="form-label">Input Aria Describedby Id</label>
+                                <input type="text" class="form-control" id="AriaAttrId" name="AriaAttrId">
+                            </div>
+                            <div class="mb-3">
+                                <label for="AriaAttrValue" class="form-label">Input Aria Describedby Value</label>
+                                <input type="text" class="form-control" id="AriaAttrValue" name="AriaAttrValue">
+                            </div>
+
+                            <button type="button" class="btn btn-primary mx-1" onclick="createFormElement(this.parentElement,'inputElem')">Create Input</button>
+                            <button type="button" class="btn btn-secondary mx-1 my-1" onclick="createFormElement(this.parentElement,'buttonElem')">Create Button</button>
+
+                        </form>
+                    </div>
+                    <div class="col-4 border-end">
+                        <form id="newForm">
+                        </form>
+                    </div>
+                    <div class="col-4 border-end">
+                        <button type="button" class="btn btn-success  mx-1 my-1" onclick="copyForm()">Copy Form</button>
+                        <div class="mb-1 h-75">
+                            <textarea class="form-control h-100" id="printArea"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="mb-1">Framework is from &copy; Bootstrap</p>
+            <p class="mb-0"><a href="https://github.com/coach01">Visit my Github repo</a>.</p>
+        </div>
+    </footer>
+
+
+    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var buttonCounter = 0;
+        function createFormElement(obj,elem) {
+
+            var counter = obj.childElementCount - 2; //  2 for buttons
+            var values = [];
+            for (var i = 0; i < counter; i++) {
+                values[i] = obj.children[i].lastElementChild.value;
+            }
+            if (elem == "inputElem") {
+                var div = document.createElement("div");
+                var typ = document.createAttribute("class");
+                typ.value = values[0];
+                div.attributes.setNamedItem(typ);
+
+                var label = document.createElement("label");
+                var textnode = document.createTextNode(values[1]);
+                label.appendChild(textnode);
+                typ = document.createAttribute("for");
+                typ.value = values[3];//id
+                label.attributes.setNamedItem(typ);
+                typ = document.createAttribute("class");
+                typ.value = "form-label";//id
+                label.attributes.setNamedItem(typ);
+                div.appendChild(label);
+
+                var input = document.createElement("input");
+                typ = document.createAttribute("type");
+                typ.value = values[2];
+                input.attributes.setNamedItem(typ);
+                typ = document.createAttribute("class");
+                typ.value = values[5];
+                input.attributes.setNamedItem(typ);
+                typ = document.createAttribute("id");
+                typ.value = values[3];
+                input.attributes.setNamedItem(typ);
+                typ = document.createAttribute("name");
+                typ.value = values[4];
+                input.attributes.setNamedItem(typ);
+
+                if (values[6].length > 0) {
+                    typ = document.createAttribute("aria-describedby");
+                    typ.value = values[6];
+                    input.attributes.setNamedItem(typ);
+
+                }
+                div.appendChild(input);
+                if (values[7].length > 0) {
+                    var subDiv = document.createElement("div");
+                    var textnode = document.createTextNode(values[7]);
+                    subDiv.appendChild(textnode);
+                    typ = document.createAttribute("id");
+                    typ.value = values[6];
+                    subDiv.attributes.setNamedItem(typ);
+                    typ = document.createAttribute("class");
+                    typ.value = "form-text";
+                    subDiv.attributes.setNamedItem(typ);
+                    div.appendChild(subDiv);
+                }
+                document.forms["newForm"].appendChild(div);
+            } else {
+                //if (buttonCounter == 0) {
+                    buttonCounter++;
+                    var button = document.createElement("button");
+                    var textnode = document.createTextNode("Submit");
+                    button.appendChild(textnode);
+                    typ = document.createAttribute("type");
+                    typ.value = "submit";
+                    button.attributes.setNamedItem(typ);
+                    typ = document.createAttribute("class");
+                    typ.value = "btn btn-primary mx-1";
+                    button.attributes.setNamedItem(typ);
+                    document.forms["newForm"].appendChild(button);
+                //}
+            }
+            var printArea = document.getElementById("printArea");
+            printArea.innerHTML = "";
+            printArea.insertAdjacentText("afterbegin", document.forms["newForm"].innerHTML);
+
+        }
+        function copyForm() {                   
+            var copyText = document.getElementById("printArea");
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
+
+</body>
+</html>
