@@ -1,0 +1,56 @@
+﻿<EMPLOYEES>
+  <EMPLOYEE>
+    <EmployeeID>1</EmployeeID>
+    <LastName>Davolio</LastName>
+    <FirstName>Nancy</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>2</EmployeeID>
+    <LastName>Fuller</LastName>
+    <FirstName>Andrew</FirstName>
+    <Title>Vice President, Sales</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>3</EmployeeID>
+    <LastName>Leverling</LastName>
+    <FirstName>Janet</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>4</EmployeeID>
+    <LastName>Peacock</LastName>
+    <FirstName>Margaret</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>5</EmployeeID>
+    <LastName>Buchanan</LastName>
+    <FirstName>Steven</FirstName>
+    <Title>Sales Manager</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>6</EmployeeID>
+    <LastName>Suyama</LastName>
+    <FirstName>Michael</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>7</EmployeeID>
+    <LastName>King</LastName>
+    <FirstName>Robert</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>8</EmployeeID>
+    <LastName>Callahan</LastName>
+    <FirstName>Laura</FirstName>
+    <Title>Inside Sales Coordinator</Title>
+  </EMPLOYEE>
+  <EMPLOYEE>
+    <EmployeeID>9</EmployeeID>
+    <LastName>Dodsworth</LastName>
+    <FirstName>Anne</FirstName>
+    <Title>Sales Representative</Title>
+  </EMPLOYEE>
+</EMPLOYEES>

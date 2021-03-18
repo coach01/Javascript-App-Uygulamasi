@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Show Table</title>
+    <meta charset="utf-8">
+    <meta name="author" content="https://github.com/coach01">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <h2>Show Table With Ajax</h2>
+        <form id="frm01">
+            <div class="form-group">
+                <label for="server">Server name:</label>
+                <input type="text" class="form-control" id="server" placeholder="Enter server name" name="server" value="localhost">
+            </div>
+            <div class="form-group">
+                <label for="user">User:</label>
+                <input type="text" class="form-control" id="user" placeholder="Enter database user" name="user" value="root">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="">
+            </div>
+            <div class="form-group">
+                <label for="database">Database Name:</label>
+                <input type="text" class="form-control" id="database" placeholder="Enter database name" name="database" value="test">
+            </div>
+            <div class="form-group">
+                <label for="table">Table Name:</label>
+                <input type="text" class="form-control" id="table" placeholder="Enter table name" name="table" value="employees">
+            </div>
+            <button type="button" class="btn btn-primary" onmouseup="fetchData(this.parentElement.id,'tbody')" onmousedown="fetchData(this.parentElement.id,'thead')">Fetch</button>
+        </form>
+
+        <div class="row mt-2">
+            <!-- Print Area for Test -->
+            <div class="col" id="printArea">
+                <table class="table table-dark table-hover">
+                    <thead id="tabHead">
+
+                    </thead>
+                    <tbody id="tabBody">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var query = "";
+        function fetchData(frmName, txt) {
+
+            for (var i = 0; i < document.forms[frmName].childElementCount - 1; i++) {
+                query += document.forms[frmName].children[i].lastElementChild.name + "=";
+                query += document.forms[frmName].children[i].lastElementChild.value;
+                if (i != document.forms[frmName].childElementCount - 2) {
+                    query += "&";
+                }
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    printArray(this.responseText,txt);
+
+                }
+            };
+            xhttp.open("POST", "fetchData.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(query+"&content="+txt);
+        }
+
+        function printArray(obj, txt) {
+            var myObj = JSON.parse(obj);
+            if (txt == "tbody") {
+                document.getElementById("tabBody").innerHTML = "";
+ 
+                for (let row = 0; row < myObj.length; row++) {
+                    var tableBodyRow = document.createElement("tr");
+                    for (let col = 0; col < myObj[row].length; col++) {
+                        let tableCol = document.createElement("td");
+                        tableCol.innerHTML = myObj[row][col];
+                        tableBodyRow.appendChild(tableCol);
+                    }
+                    document.getElementById("tabBody").appendChild(tableBodyRow);
+                }
+            } else {
+                   document.getElementById("tabHead").innerHTML = "";
+                   //var myObj = JSON.parse(obj);
+                    var tableHeadRow = document.createElement("tr");
+                    for (let col = 0; col < myObj.length; col++) {
+                        let tableCol = document.createElement("th");
+                        tableCol.innerHTML = myObj[col]['name'].toUpperCase();
+                        tableHeadRow.appendChild(tableCol);
+                    }
+                document.getElementById("tabHead").appendChild(tableHeadRow);
+            }
+
+        }
+
+    </script>
+</body>
+</html>
+

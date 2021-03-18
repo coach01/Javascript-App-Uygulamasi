@@ -1,0 +1,11 @@
+﻿Web Language
+
+Html- Hyper Text Markup Language
+
+CSS - Cascading Style Sheets
+
+JS - Javascript
+
+PHP - Hypertext Preprocessor
+
+ASP - Active Server Pages

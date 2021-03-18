@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Database</title>
+    <meta charset="utf-8">
+    <meta name="author" content="https://github.com/coach01">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body onload="fetchData('databases')">
+
+    <div class="container">
+        <h2>Show Database and Table</h2>
+        <form id="frm01">
+
+            <div class="form-group">
+                <label for="databases">Select Database:</label>
+              <select class="form-control" id="databases" name="databases" onchange="fetchData('tables&table='+this.value)">
+                <option value="">Select Database</option>
+              </select>
+            </div>
+            <!--<div class="form-group">
+                <label for="tables">Select Table:</label>
+              <select class="form-control" id="tables" name="tables">
+                  <option value="">Select Table</option>              
+              </select>
+            </div>-->
+        </form>
+        <ul class="list-group" id="tables">
+
+        </ul>
+        <div class="row mt-2"><!-- Print Area for Test -->
+            <div class="col" id="printArea"></div>
+        </div>
+    </div>
+
+    <script>
+        function fetchData(field) {
+            var field = field;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var obj = JSON.parse(this.responseText);
+                    printData(obj,field);
+                }
+            };
+            xhttp.open("POST", "fetchData.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("field=" + field);
+            xhttp = null;
+
+        }
+
+        function printData(obj,field) {
+             var field = field.split("&")[0];
+              var area = document.getElementById(field);
+              if (field == "tables") {
+                area.innerHTML = "";
+                for (var i = 0; i < obj.length; i++) {                
+                    var option = document.createElement("li");
+                    var textnode = document.createTextNode(obj[i]);
+                    option.appendChild(textnode);
+                    var typ = document.createAttribute("class");
+                    typ.value = "list-group-item";
+                    option.attributes.setNamedItem(typ);
+                    area.appendChild(option); 
+                }
+
+              }else{
+                for (var i = 0; i < obj.length; i++) {                
+                    var option = document.createElement("option");
+                    var textnode = document.createTextNode(obj[i]);
+                    option.appendChild(textnode);
+                    var typ = document.createAttribute("value");
+                    typ.value = obj[i];
+                    option.attributes.setNamedItem(typ);
+                    area.appendChild(option); 
+                }
+              }
+
+        }
+        //You can use the below function for second select element of form
+        //change function name in fetchData function
+        //remove comment from second select elements of form
+        function printOption(obj,field) {
+             var field = field.split("&")[0];
+              var area = document.getElementById(field);
+              if (field == "tables") {
+                area.innerHTML = "";                
+              }
+
+            for (var i = 0; i < obj.length; i++) {                
+                var option = document.createElement("option");
+                var textnode = document.createTextNode(obj[i]);
+                option.appendChild(textnode);
+                var typ = document.createAttribute("value");
+                typ.value = obj[i];
+                option.attributes.setNamedItem(typ);
+                area.appendChild(option); 
+
+            }
+        }
+    </script>
+</body>
+</html>
+

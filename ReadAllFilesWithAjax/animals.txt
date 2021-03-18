@@ -1,0 +1,6 @@
+﻿1.Lion
+2.Tiger
+3.Bird
+4.Dog
+5.Wolf
+
