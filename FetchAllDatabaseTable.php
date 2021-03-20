@@ -64,15 +64,15 @@ function control_input($data) {
 
 	  <form class="form-inline" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	    <label for="server" class="mb-2 mr-sm-2">Server:</label>
-	    <input type="text" class="form-control mb-2 mr-sm-2" id="server" placeholder="Enter server" name="server" value="localhost">
+	    <input type="text" class="form-control mb-2 mr-sm-2" id="server" placeholder="Enter server" name="server" value="<?php echo $server; ?>">
 	    <label for="user" class="mb-2 mr-sm-2">User:</label>
-	    <input type="text" class="form-control mb-2 mr-sm-2" id="user" placeholder="Enter user" name="user" value="root">
+	    <input type="text" class="form-control mb-2 mr-sm-2" id="user" placeholder="Enter user" name="user" value="<?php echo $user; ?>">
 	    <label for="db" class="mb-2 mr-sm-2">Password:</label>
 	    <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="Enter password" name="password" value="">	  	
 	    <label for="database" class="mb-2 mr-sm-2">Database:</label>
-	    <input type="text" class="form-control mb-2 mr-sm-2" id="database" placeholder="Enter database" name="database" value="information_schema">
+	    <input type="text" class="form-control mb-2 mr-sm-2" id="database" placeholder="Enter database" name="database" value="<?php echo $database; ?>">
 	    <label for="table" class="mb-2 mr-sm-2">Table:</label>
-	    <input type="text" class="form-control mb-2 mr-sm-2" id="table" placeholder="Enter table" name="table" value="character_sets">   
+	    <input type="text" class="form-control mb-2 mr-sm-2" id="table" placeholder="Enter table" name="table" value="<?php echo $table; ?>">   
 	    <button type="submit" class="btn btn-primary mb-2">Fetch</button>
 	  </form>
 
