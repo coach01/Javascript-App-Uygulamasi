@@ -31,8 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["process"])) {
 				header("location:FileSystem.php");//maybe you give message				
 				}	
 		}elseif($process == "create"){
-				if (!file_exists($_POST["name"])) {
-				$myfile = fopen($_POST["name"], "x+") or die("Unable to open file!");         
+				$fileName = "";
+				if(pathinfo($_POST["name"],PATHINFO_EXTENSION) != "txt"){
+					$fileName = $_POST["name"] . ".txt";
+				}else{
+					$fileName = $_POST["name"];
+				}
+
+				if (!file_exists($fileName)) {
+				$myfile = fopen($fileName , "x+") or die("Unable to open file!");         
                 fwrite($myfile, "Created");
                 fclose($myfile);
 				header("location:FileSystem.php");	
